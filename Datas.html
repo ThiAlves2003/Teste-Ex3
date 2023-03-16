@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+	  <meta charset="UTF-8">
+	  <title>Datas</title>
+      <style type="text/css">
+
+	  body {
+	  	margin: 0;
+	  }
+      
+      div {
+      	background-color: Black;
+      	height: 30px;
+      	width: calc(100vw-padding);
+      	text-align: right;
+      	padding-top: 7px;
+      	color: white;
+      	padding-right: 5px;
+      }
+
+      #saudacao {
+      	font-size: 30px;
+      }
+
+      </style>
+
+	  <script type="text/javascript">
+
+	  	var hoje = new Date(); //data atual
+
+	  	function escreveData(){
+	  	var dia = hoje.getDate();
+	  	var mes = hoje.getMonth();
+	  	var ano = hoje.getFullYear();
+
+        var meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+	  	var mesTextual = meses[mes];
+	  	
+        var diaSemanaNum = hoje.getDay();
+	  	var semana = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sabado"];
+        var diaSemanaTextual = semana[diaSemanaNum];
+        
+        var dataPorExtenso = `${diaSemanaTextual}, ${dia} de ${mesTextual} de ${ano}`;
+
+        document.getElementById("data").textContent = dataPorExtenso;
+        configByTime();
+        }
+
+        function configByTime() {
+        	if(hoje.getHours() < 18) {
+        		document.getElementById("body").style.backgroundColor="RGB(255,255,151)";
+        		document.getElementById("body").style.color="RGB(83,169,255";
+        	if (hoje.getHours() <12) {
+        		document.getElementById("saudacao").textContent = "Bom dia!";
+        	} else{
+        		document.getElementById("saudacao").textContent = "Boa Tarde";
+        	}
+
+        	} else {
+        		document.getElementById("body").style.backgroundColor="gray";
+        		document.getElementById("body").style.color="white";
+        		document.getElementById("saudacao").textContent = "Boa Noite";
+        	}
+        }
+
+	  </script>
+	</head>
+	<body id="body" onload="escreveData();">
+
+		<div id="data"></div>
+
+		<span id="saudacao"></span>
+
+	</body>
+	</html>
